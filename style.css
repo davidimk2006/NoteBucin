@@ -82,6 +82,10 @@ body {
   text-decoration: none;
 }
 
+.optext {
+  text-align: center;
+}
+
 .laman {
   position: fixed;
   bottom: 0;
