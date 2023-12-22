@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css?family-Poppins:100,200,300,400,500,600,700,800,900');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --clrb: #222327;
+}
+
+body {
+  background-color: var(--clrb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  font-family: 'Poppins', Sans-Serif;
+}
+
+.gif {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 400px;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+}
+
+.watermark {
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Silkscreen', sans-serif;
+  font-size: 24px;
+  color: rgb(255, 255, 102);
+  border-bottom: 2px solid white;
+  pointer-events: none;
+  /* Menghindari interaksi dengan watermark */
+}
+
+.emote-container {
+  position: fixed;
+  display: flex;
+  top: 39%;
+  align-items: center;
+  pointer-events: none;
+}
+
+.emote {
+  width: 50px;
+  height: 50px;
+  margin-left: 8px; 
+  /* Jarak antara emote dan teks */
+}
+
+.textopen {
+  color: white;
+  font-size: 18px;
+  font-family: 'Indie Flower', cursive;
+  margin-bottom: 32px;
+}
+
+.opening h3 {
+  position: relative;
+  display: flex;
+  width: 400px;
+  font-size: 15px;
+  color: var(--clrb);
+  background-color: white;
+  border-radius: 16px;
+  justify-content: center;
+}
+
+.opening a {
+  text-decoration: none;
+}
+
+.laman {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 60px;
+  height: 100vh;
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+laman ul
+{
+  display: flex;
+  height: 50px;
+}
+.laman ul li
+{
+  position: relative;
+  list-style: none;
+  margin-bottom: 50px;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+.laman ul li a
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+.laman ul li a .icon
+{
+  position: relative;
+  display: block;
+  bottom: 10px;
+  line-height: 75px;
+  font-size: 1.5em;
+  text-align: center;
+  transition: 0.4em;
+  color: var(--clrb);
+}
+.laman ul li:active a .icon,
+.laman ul li.active a .icon
+{
+  transform: translateY(-32px);
+}
+.laman ul li a .text
+{
+  position: absolute;
+  color: var(--clrb);
+  font-weight: 400;
+  font-size: 0.75em;
+  letter-spacing: 0.09em;
+  transition: 0.5s;
+  opacity: 0;
+}
+.laman ul li:active a .text,
+.laman ul li.active a .text
+{
+  opacity: 3;
+  margin-inline: 50%;
+  transform: translateY(10px) translateX(-50%);
+}
+.indicator
+{
+  position: absolute;
+  top: 138px;
+  width: 70px;
+  height: 70px;
+  background: #29fd53;
+  border-radius: 50%;
+  border: 6px solid var(--clrb);
+  transition: 0.5s;
+}
+.indicator::before
+{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -22px;
+  width: 20px;
+  height: 20px;
+  background: transparant;
+  border-top-right-radius: 20px;
+  /*box-shadow: 1px -10px 0 0 var(--clrb);*/
+}
+.indicator::after
+{
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -22px;
+  width: 20px;
+  height: 20px;
+  background: transparant;
+  border-top-left-radius: 20px;
+  /*box-shadow: -1px -10px 0 0 var(--clrb);*/
+}
+
+.overlay {
+  z-index: 999999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: var(--clrb);
+  text-align: center;
+}
+
+.content {
+  display: none;
+  padding: 90px;
+  margin-bottom: 100px;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.content h1 {
+  color: #29fd53;
+}
+
+/*ANIMASI INDICATOR*/
+.laman ul li:nth-child(1).active ~ .indicator
+{
+  transform: translateY(calc(120px * 0));
+}
+.laman ul li:nth-child(2).active ~ .indicator
+{
+  transform: translateY(calc(120px * 1));
+}
+.laman ul li:nth-child(3).active ~ .indicator
+{
+  transform: translateY(calc(120px * 2));
+}
+.laman ul li:nth-child(4).active ~ .indicator
+{
+  transform: translateY(calc(120px * 3));
+}
+.laman ul li:nth-child(5).active ~ .indicator
+{
+  transform: translateY(calc(120px * 4));
+}
+
+/*ANIMASI EMOTE*/
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+.emote {
+  animation: bounce 2s infinite;
+}
+
+/*Preloader*/
+.loading {
+  position: absolute;
+  display: inline-block;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  color: white;
+  top: 45%;
+  left: 130px;
+}
+
+.loading:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}}
