@@ -285,3 +285,7 @@ laman ul
     text-shadow:
       .25em 0 0 white,
       .5em 0 0 white;}}
+
+@media only screen and (max-width: 767px) {
+    /* Gaya untuk layar seluler */
+}
